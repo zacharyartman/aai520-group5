@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatBot</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=send" />
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 700px;
+      margin-right: 10px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #2654a4;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    button:hover {
+      background-color: #242665;
+    }
+
+    #context {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      max-width: 700px;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table tr {
+      border-bottom: 1px solid #ddd;
+      padding: 10px;
+    }
+
+    table td {
+      padding: 10px;
+      text-align: left;
+      font-size: 16px;
+    }
+
+    table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    #conversation {
+      color: #333;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    #contextForm,
+    #question {
+      display: flex;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>AAI520 - Group 5 - Chatbot </h1>
+    <h2>Start by providing context</h2>
+    <p id="context"></p>
+    <table>
+      <tbody id="conversation">
+      </tbody>
+    </table>
+    <form id="contextForm">
+      <input type="text" name="user_input" id="user_input" placeholder="Context">
+      <button type="submit">
+        <span class="material-symbols-outlined">
+          send
+        </span>
+      </button>
+    </form>
+
+    <button id="sampleContextButton">
+      Use Sample Context
+    </button>
+
+    <form id="question" style="display: none;">
+      <input type="text" name="question_user_input" id="question_user_input" placeholder="Question">
+      <button type="submit">
+        <span class="material-symbols-outlined">
+          send
+        </span>
+      </button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('contextForm').addEventListener('submit', function (event) {
+      event.preventDefault();  // Prevent the form from submitting normally
+      let userInput = document.getElementById('user_input').value;
+
+      fetch('/submitContext', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `user_input=${encodeURIComponent(userInput)}`
+      })
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('context').innerText = `Context saved. Ask a question now!`;
+          document.getElementById('question').style.display = 'flex'; 
+          document.getElementById('contextForm').style.display = 'none';
+          document.getElementById('sampleContextButton').style.display = 'none';
+        })
+        .catch(error => console.error('Error:', error));
+    });
+
+    document.getElementById('question').addEventListener('submit', function (event) {
+      event.preventDefault(); 
+
+      let userInput = document.getElementById('question_user_input').value;
+
+      document.getElementById('conversation').innerHTML += `<tr><td>You Said: ${userInput}</td></tr>`;
+      document.getElementById('question_user_input').value = '';
+
+      fetch('/getAnswer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `user_input=${encodeURIComponent(userInput)}`
+      })
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('conversation').innerHTML += `<tr><td>${data}</td></tr>`;
+        })
+        .catch(error => console.error('Error:', error));
+    });
+
+    document.getElementById('sampleContextButton').addEventListener('click', function (event) {
+      document.getElementById('user_input').value = "The Super Bowl is the annual championship game of the National Football League (NFL) and one of the most-watched sporting events in the U.S. It is usually played on the first Sunday in February, marking the end of the NFL season. The game is held in a different major U.S. city each year. The event determines the champion of the NFL season. ";
+    })
+  </script>
+</body>
+
+</html>
