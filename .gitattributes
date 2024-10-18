@@ -1,0 +1,8 @@
+trained_model/added_tokens.json filter=lfs diff=lfs merge=lfs -text
+trained_model/config.json filter=lfs diff=lfs merge=lfs -text
+trained_model/generation_config.json filter=lfs diff=lfs merge=lfs -text
+trained_model/model.safetensors filter=lfs diff=lfs merge=lfs -text
+trained_model/special_tokens_map.json filter=lfs diff=lfs merge=lfs -text
+trained_model/spiece.model filter=lfs diff=lfs merge=lfs -text
+trained_model/tokenizer_config.json filter=lfs diff=lfs merge=lfs -text
+trained_model/training_args.bin filter=lfs diff=lfs merge=lfs -text
