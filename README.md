@@ -3,7 +3,6 @@
 ## Prerequisites 
 
 * `python` and `pip` intalled
-* Model downloaded from https://drive.google.com/drive/folders/1xZIumamQ2TWI__CfxkB_8kvWb81ioXq1?usp=share_link (too big for GitHub)
 
 ## Installation 
 
