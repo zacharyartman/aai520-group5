@@ -1,5 +1,7 @@
 # AAI-520 Group 5 Final Project
 
+https://standford-qa-6gmo324kca-uc.a.run.app/ 
+
 ## Prerequisites 
 
 * `python` and `pip` intalled
