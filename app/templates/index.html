@@ -128,10 +128,20 @@
       </button>
     </form>
 
-    <button id="sampleContextButton">
-      Use Sample Context
-    </button>
+    <div id="buttonsGrid" style="display: flex; gap: 20px; justify-content: center;">
+      <button id="sampleContextButton">
+        Use Sample Context #1
+      </button>
 
+      <button id="sampleContextButton2">
+        Use Sample Context #2
+      </button>
+
+      <button id="sampleContextButton3">
+        Use Sample Context #3
+      </button>
+    </div>
+  
     <form id="question" style="display: none;">
       <input type="text" name="question_user_input" id="question_user_input" placeholder="Question">
       <button type="submit">
@@ -159,7 +169,7 @@
           document.getElementById('context').innerText = `Context saved. Ask a question now!`;
           document.getElementById('question').style.display = 'flex'; 
           document.getElementById('contextForm').style.display = 'none';
-          document.getElementById('sampleContextButton').style.display = 'none';
+          document.getElementById('buttonsGrid').style.display = 'none';
         })
         .catch(error => console.error('Error:', error));
     });
@@ -189,6 +199,15 @@
     document.getElementById('sampleContextButton').addEventListener('click', function (event) {
       document.getElementById('user_input').value = "The Super Bowl is the annual championship game of the National Football League (NFL) and one of the most-watched sporting events in the U.S. It is usually played on the first Sunday in February, marking the end of the NFL season. The game is held in a different major U.S. city each year. The event determines the champion of the NFL season. ";
     })
+
+    document.getElementById('sampleContextButton2').addEventListener('click', function (event) {
+      document.getElementById('user_input').value = "A retail company is launching a new online store to reach more customers. The marketing team is promoting the launch, and the logistics team is making sure the inventory is ready. The customer support team is also being trained to assist with online orders.";
+    })
+
+    document.getElementById('sampleContextButton3').addEventListener('click', function (event) {
+      document.getElementById('user_input').value = "A startup is building an app that helps people manage their time using AI. The development team is testing the app for problems, and the product team is working on the pricing and release plan.";
+    })
+
   </script>
 </body>
 
