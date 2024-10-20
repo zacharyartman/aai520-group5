@@ -21,3 +21,9 @@ alternative_models/bert/saved_qa_bert/tf_model.h5 filter=lfs diff=lfs merge=lfs 
 alternative_models/bert/saved_qa_bert/tokenizer.json filter=lfs diff=lfs merge=lfs -text
 alternative_models/bert/saved_qa_bert/tokenizer_config.json filter=lfs diff=lfs merge=lfs -text
 alternative_models/bert/standford_qa_bert.pdf filter=lfs diff=lfs merge=lfs -text
+Alternative[[:space:]]Models/bert/saved_qa_bert/tf_model.h5 filter=lfs diff=lfs merge=lfs -text
+Alternative[[:space:]]Models/bert/saved_qa_bert/tokenizer.json filter=lfs diff=lfs merge=lfs -text
+Alternative[[:space:]]Models/bert/saved_qa_bert/tokenizer_config.json filter=lfs diff=lfs merge=lfs -text
+Alternative[[:space:]]Models/bert/saved_qa_bert/vocab.txt filter=lfs diff=lfs merge=lfs -text
+Alternative[[:space:]]Models/bert/saved_qa_bert/config.json filter=lfs diff=lfs merge=lfs -text
+Alternative[[:space:]]Models/bert/saved_qa_bert/special_tokens_map.json filter=lfs diff=lfs merge=lfs -text
