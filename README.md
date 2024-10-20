@@ -6,7 +6,7 @@ Chatbot based on [Stanford Question Answering Dataset](https://www.kaggle.com/da
 
 * Main GPT2 based model is located `standford_qa.ipynb`
 * `app/` contains saved model and files for the Chatbot web server
-* `alternative_models` contains alternative models exploration and training  
+* `/Alternative Models/` contains alternative models exploration and training  
 
 --- 
 
