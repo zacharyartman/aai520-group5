@@ -1,7 +1,5 @@
 # AAI-520 Group 5 Final Project
 
-https://standford-qa-6gmo324kca-uc.a.run.app/ 
-
 Chatbot based on [Stanford Question Answering Dataset](https://www.kaggle.com/datasets/stanfordu/stanford-question-answering-dataset)
 
 * Main GPT2 based model is located `standford_qa.ipynb`
